@@ -7,69 +7,61 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 
 @Entity
-@Table(name = "TB_IMOVEL", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_IMOVEL_MATRICULA", columnNames = "MATRICULA")
+@Table(name = "TBL_IMOVEL", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_IMOVEL_MATRICULA", columnNames = "MATRICULA_IMOVEL")
 })
 public class Imovel extends Asseguravel {
 
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESC_IMOVEL")
     private String descricao;
 
-    @Column(name = "METRO_QUADRADOS")
-    private Float metroQuadrados;
+    @Column(name = "METROS_QUADRADOS_IMOVEL")
+    private Float metrosQuadrados;
 
-    @Column(name = "QUARTOS")
+    @Column(name = "QUARTOS_IMOVEL")
     private Integer quartos;
 
-    @Column(name = "BANHEIROS")
+    @Column(name = "BANHEIROS_IMOVEL")
     private Integer banheiros;
 
-    @Column(name = "VAGAS_GARAGEM")
+    @Column(name = "VAGAS_GARAGEM_IMOVEL")
     private Integer vagasGaragem;
 
-    @Column(name = "MATRICULA")
+    @Column(name = "MATRICULA_IMOVEL", unique = true) // Certifique-se de que esta coluna é única
     private String matricula;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_IMOVEL")
     private TipoSeguro tipo;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(
-            name = "TB_IMOVEL_FOTO",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "IMOVEL",
-                            referencedColumnName = "ID_ASSEGURAVEL",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_IMOVEL_FOTO"
-                            )
-                    )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "FOTO",
-                            referencedColumnName = "ID_FOTO",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_FOTO_IMOVEL"
-                            )
-                    )
-            }
-    )
-    private Set<Foto> fotos = new LinkedHashSet<>();
-
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(
-            name = "ENDERECO",
+            name = "ENDERECO", // Nome da coluna de chave estrangeira
             referencedColumnName = "ID_ENDERECO",
-            foreignKey = @ForeignKey(
-                    name = "FK_IMOVEL_DOCUMENTO"
-            )
+            foreignKey = @ForeignKey(name = "FK_IMOVEL_ENDERECO")
     )
     private Endereco endereco;
+
+    //Relacionamento ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "TBL_IMOVEL_FOTO",
+            joinColumns = @JoinColumn(
+                    name = "IMOVEL", // Nome da coluna de chave estrangeira
+                    referencedColumnName = "ID_ASSEGURAVEL",
+                    foreignKey = @ForeignKey(name = "FK_IMOVEL_FOTO")
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "FOTO", // Nome da coluna de chave estrangeira
+                    referencedColumnName = "ID_FOTO",
+                    foreignKey = @ForeignKey(name = "FK_FOTO_IMOVEL")
+            )
+    )
+    private Set<Foto> fotos = new LinkedHashSet<>();
 }

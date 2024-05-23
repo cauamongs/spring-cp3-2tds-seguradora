@@ -15,9 +15,9 @@ import java.util.Set;
 @Builder
 
 @Entity
-@Table(name = "TB_DOCUMENTO", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_DOCUMENTO_TIPO",columnNames = "TIPP_DOCUMENTO"),
-        @UniqueConstraint(name = "UK_DOCUMENTO_NUMERO",columnNames = "NUMERO_DOCUMENTO")
+@Table(name = "TBL_DOCUMENTO", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_DOCUMENTO_TIPO",columnNames = "TP_DOCUMENTO"),
+        @UniqueConstraint(name = "UK_DOCUMENTO_NUMERO",columnNames = "NM_DOCUMENTO")
 })
 public class Documento {
 
@@ -27,16 +27,16 @@ public class Documento {
     @Column(name = "ID_DOCUMENTO")
     private Long id;
 
-    @Column(name = "NUMERO_DOCUMENTO")
+    @Column(name = "NM_DOCUMENTO")
     private String numero;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "TIPO_DOCUMENTO")
+    @Column(name = "TP_DOCUMENTO")
     private TipoDocumento tipo;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
-            name = "TB_DOCUMENTO_FOTOS",
+            name = "TBL_DOCUMENTO_FOTO",
             joinColumns = {
                     @JoinColumn(
                             name = "DOCUMENTO",

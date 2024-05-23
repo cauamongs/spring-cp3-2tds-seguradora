@@ -1,6 +1,5 @@
 package br.com.fiap.seguradora.dto.request;
 
-import br.com.fiap.seguradora.entity.Endereco;
 import br.com.fiap.seguradora.entity.TipoSeguro;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +11,7 @@ public record ImovelRequest(
         String descricao,
 
         @Positive
-        Float metroQuadrados,
+        Float metrosQuadrados,
 
         @Positive
         Integer quartos,
@@ -26,6 +25,6 @@ public record ImovelRequest(
         TipoSeguro tipo,
 
         @Valid
-        AbstractRequest endereco
+        EnderecoRequest endereco
 ) {
 }

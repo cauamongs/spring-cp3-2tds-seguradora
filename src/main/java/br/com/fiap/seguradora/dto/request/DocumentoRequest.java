@@ -10,4 +10,5 @@ public record DocumentoRequest(
         @NotNull(message = "Tipo é um campo obrigatório")
         TipoDocumento tipo
 ) {
+
 }

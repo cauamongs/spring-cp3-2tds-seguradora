@@ -9,11 +9,11 @@ import java.time.LocalDate;
 
 public record SeguroRequest(
 
-        @NotNull(message = "Premio é um campo obrigatório")
+        @NotNull
         @Positive
         Double premio,
 
-        @NotNull(message = "Valor é um campo obrigatório")
+        @NotNull
         @Positive
         Double valor,
 

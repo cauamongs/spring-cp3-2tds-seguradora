@@ -1,6 +1,7 @@
 package br.com.fiap.seguradora.service;
 
 
+import br.com.fiap.seguradora.entity.Veiculo;
 import org.springframework.data.domain.Example;
 
 import java.util.Collection;

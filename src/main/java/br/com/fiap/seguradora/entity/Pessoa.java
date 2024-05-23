@@ -16,7 +16,7 @@ import java.util.Set;
 @Builder
 
 @Entity
-@Table(name = "TB_PESSOA")
+@Table(name = "TBL_PESSOA")
 public class Pessoa {
 
     @Id
@@ -25,7 +25,7 @@ public class Pessoa {
     @Column(name = "ID_PESSOA")
     private Long id;
 
-    @Column(name = "NOME_PESSOA")
+    @Column(name = "NM_PESSOA")
     private String nome;
 
     @Column(name = "SOBRENOME_PESSOA")
@@ -34,12 +34,12 @@ public class Pessoa {
     @Column(name = "EMAIL_PESSOA")
     private String email;
 
-    @Column(name = "DATA_NASCIMENTO")
+    @Column(name = "DT_NASCIMENTO")
     private LocalDate nascimento;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
-            name = "TB_PESSOA_ENDERECO",
+            name = "TBL_PESSOA_ENDERECO",
             joinColumns = {
                     @JoinColumn(
                             name = "PESSOA",
@@ -62,7 +62,7 @@ public class Pessoa {
     private Set<Endereco> enderecos = new LinkedHashSet<>();
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "TIPO_PESSOA")
+    @Column(name = "TP_PESSOA")
     private TipoPessoa tipo;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -77,7 +77,7 @@ public class Pessoa {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
-            name = "TB_PESSOA_FOTO",
+            name = "TBl_PESSOA_FOTO",
             joinColumns = {
                     @JoinColumn(
                             name = "PESSOA",
@@ -99,7 +99,3 @@ public class Pessoa {
     )
     private Set<Foto> fotos = new LinkedHashSet<>();
 }
-
-
-
-
