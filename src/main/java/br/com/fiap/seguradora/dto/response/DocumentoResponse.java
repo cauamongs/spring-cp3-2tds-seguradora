@@ -10,11 +10,8 @@ import java.util.Collection;
 public record DocumentoResponse(
 
         TipoDocumento tipo,
-
         Long id,
-
         Collection<Foto> fotos,
-
         String numero
 ) {
 }

@@ -4,20 +4,19 @@ import br.com.fiap.seguradora.dto.request.PessoaRequest;
 import br.com.fiap.seguradora.dto.response.DocumentoResponse;
 import br.com.fiap.seguradora.dto.response.EnderecoResponse;
 import br.com.fiap.seguradora.dto.response.PessoaResponse;
-import br.com.fiap.seguradora.entity.*;
+import br.com.fiap.seguradora.entity.Documento;
+import br.com.fiap.seguradora.entity.Pessoa;
 import br.com.fiap.seguradora.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-
 
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaResponse>{
-
+public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaResponse> {
     @Autowired
     private PessoaRepository repo;
 
@@ -26,6 +25,7 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
 
     @Autowired
     private EnderecoService enderecoService;
+
 
     @Override
     public Collection<Pessoa> findAll(Example<Pessoa> example) {
@@ -42,10 +42,11 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
         return repo.save(e);
     }
 
+
     @Override
     public Pessoa toEntity(PessoaRequest dto) {
 
-        Documento documento = docService.toEntity(dto.documento());
+        Documento documento = DocumentoService.toEntity(dto.documento());
 
         return Pessoa.builder()
                 .nome(dto.nome())
@@ -56,6 +57,7 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
                 .documento(documento)
                 .build();
     }
+
 
     @Override
     public PessoaResponse toResponse(Pessoa e) {

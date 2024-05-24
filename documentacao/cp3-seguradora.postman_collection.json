@@ -1,0 +1,584 @@
+{
+  "info": {
+    "_postman_id": "496023d2-624f-4730-b59d-6ed35aeb2ba6",
+    "name": "cp3-seguradora",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30957512"
+  },
+  "item": [
+    {
+      "name": "Pessoa",
+      "item": [
+        {
+          "name": "Pessoas",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nome\": \"Ana\",\n    \"sobrenome\": \"Souza\",\n    \"email\": \"ana.souza@exemplo.com\",\n    \"nascimento\": \"1990-05-15\",\n    \"tipo\": \"PF\",\n    \"documento\": {\n        \"numero\": \"98765432100\",\n        \"tipo\": \"CPF\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:80/pessoas",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "pessoas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pessoas by example",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/pessoas?nome=Ana",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "pessoas"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "Ana"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pessoas by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/pessoas/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "pessoas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pessoas/Fotos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "src",
+                  "value": "foto.jpg",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/lucas/Downloads/foto.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:80/pessoas/1/fotos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "pessoas",
+                "1",
+                "fotos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pessoas/enderecos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"logradouro\": \"Rua das Flores\",\n    \"numero\": \"200\",\n    \"complemento\": \"Casa 2\",\n    \"cep\": \"01234-567\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:80/pessoas/1/enderecos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "pessoas",
+                "1",
+                "enderecos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Documento",
+      "item": [
+        {
+          "name": "Documentos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"numero\": \"98765432100\",\n    \"tipo\": \"CPF\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:80/documentos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "documentos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Documento by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/documentos/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "documentos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Documentos/fotos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "src",
+                  "value": "foto_documento.jpg",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/lucas/Downloads/foto.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:80/documentos/1/fotos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "documentos",
+                "1",
+                "fotos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Imovel",
+      "item": [
+        {
+          "name": "Imoveis",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"valor\": 750000.00,\n    \"descricao\": \"Casa de campo\",\n    \"metrosQuadrados\": 200.00,\n    \"quartos\": 4,\n    \"banheiros\": 3,\n    \"vagasGaragem\": 3,\n    \"tipo\": \"IMOVEL\",\n    \"endereco\": {\n        \"logradouro\": \"Avenida Central\",\n        \"numero\": \"100\",\n        \"complemento\": \"Bloco B, Apt 303\",\n        \"cep\": \"12345-678\"\n    },\n    \"matricula\": \"0987654321\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:80/imoveis",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "imoveis"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Imoveis by example",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/imoveis?descricao=Campo",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "imoveis"
+              ],
+              "query": [
+                {
+                  "key": "descricao",
+                  "value": "Campo"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Imoveis by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/imoveis/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "imoveis",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Imoveis/fotos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "src",
+                  "value": "foto_imovel.jpg",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/lucas/Downloads/foto.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:80/imoveis/1/fotos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "imoveis",
+                "1",
+                "fotos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Seguro",
+      "item": [
+        {
+          "name": "Seguros",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"premio\": 2000.00,\n    \"valor\": 120000.00,\n    \"inicio\": \"2024-03-10\",\n    \"fim\": \"2025-03-10\",\n    \"contratante\": {\n        \"id\": 2\n    },\n    \"objeto\": {\n        \"id\": 2\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:80/seguros",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "seguros"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Seguros by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/seguros/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "seguros",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Seguros by example",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/seguros?inicio=2024-03-10&fim=2025-03-10",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "seguros"
+              ],
+              "query": [
+                {
+                  "key": "inicio",
+                  "value": "2024-03-10"
+                },
+                {
+                  "key": "fim",
+                  "value": "2025-03-10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Veiculo",
+      "item": [
+        {
+          "name": "Veiculos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"chassis\": \"789DEF456GHI123ABC0\",\n    \"placa\": \"XYZ5678\",\n    \"modelo\": \"Sedan\",\n    \"cor\": \"Azul\",\n    \"marca\": \"BMW\",\n    \"ano\": \"2022\",\n    \"valor\": 800000.00\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:80/veiculos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "veiculos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Veiculos by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/veiculos/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "veiculos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Veiculos by example",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:80/veiculos?marca=BMW",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "veiculos"
+              ],
+              "query": [
+                {
+                  "key": "marca",
+                  "value": "BMW"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Veiculos/fotos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "src",
+                  "value": "foto_veiculo.jpg",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/C:/Users/lucas/Downloads/foto.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "localhost:80/veiculos/1/fotos",
+              "host": [
+                "localhost"
+              ],
+              "port": "80",
+              "path": [
+                "veiculos",
+                "1",
+                "fotos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

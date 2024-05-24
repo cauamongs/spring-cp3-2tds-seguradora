@@ -15,7 +15,7 @@ import java.util.Set;
 @Builder
 
 @Entity
-@Table(name = "TBL_DOCUMENTO", uniqueConstraints = {
+@Table(name = "TB_DOCUMENTO", uniqueConstraints = {
         @UniqueConstraint(name = "UK_DOCUMENTO_TIPO",columnNames = "TP_DOCUMENTO"),
         @UniqueConstraint(name = "UK_DOCUMENTO_NUMERO",columnNames = "NM_DOCUMENTO")
 })
@@ -36,7 +36,7 @@ public class Documento {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
-            name = "TBL_DOCUMENTO_FOTO",
+            name = "TB_DOCUMENTO_FOTOS",
             joinColumns = {
                     @JoinColumn(
                             name = "DOCUMENTO",
